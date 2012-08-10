@@ -227,7 +227,7 @@ module Meanbee
             end
             [:include, :ignore].each do |key|
               xml.tag!(key) {
-                Range.new(0, @files.length).each do |i|
+                @files.length.times do |i|
                   xml.tag!(key)
                 end
               }
