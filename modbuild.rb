@@ -235,7 +235,7 @@ module Meanbee
           }
         }
          
-        return xml.to_s
+        return xml.target!
       end
       
       protected
