@@ -279,6 +279,11 @@ opts = OptionParser.new do |opts|
   opts.on("--debug", "Enable debug mode") do |v|
     options[:debug] = v
   end
+  
+  opts.on("--help", "Show help") do |v|
+    puts opts
+    exit
+  end
 end
 
 filename = opts.parse!
