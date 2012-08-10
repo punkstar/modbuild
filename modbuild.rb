@@ -71,7 +71,7 @@ module Meanbee
                   @logger.debug "      Unknown package variables"
               end
             end
-          elsif (line =~ /^.* .*$/)
+          elsif (line =~ /^.*\s+.*$/)
             @logger.debug "  Line: #{line}"
             # local_file is the file in the .modman directory, the magento_file is where
             # the file is placed in the magento root
