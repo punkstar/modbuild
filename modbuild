@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.dirname(__FILE__) + '/lib'
+
+require 'modbuild'
+
+options = {}
+opts = OptionParser.new do |opts|
+  opts.banner = "Usage: modbuild.rb [options] filename"
+
+  opts.on("--debug", "Enable debug mode") do |v|
+    options[:debug] = v
+  end
+  
+  opts.on("--help", "Show help") do |v|
+    puts opts
+    exit
+  end
+end
+
+filename = opts.parse!
+
+if filename.length == 1
+  modbuild = Meanbee::Modbuild::Base.new filename[0]
+  modbuild.enable_debug() if options[:debug]
+  puts modbuild.build
+else
+  raise 'You need to provide a filename'
+end

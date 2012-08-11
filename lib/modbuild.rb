@@ -1,14 +1,13 @@
-#!/usr/bin/env ruby
-
 require 'pathname'
 require 'logger'
 require 'builder'
 require 'optparse'
-require 'pp'
 
 module Meanbee
   module Modbuild
     class Base
+      attr_accessor :package_name, :package_version, :package_summary, :package_description
+      
       def initialize(module_directory)
         @logger = Logger.new(STDERR)
         @logger.level = Logger::FATAL
@@ -157,7 +156,7 @@ module Meanbee
       end
       
       def add_file(name)
-        @files << _identify_file(name)
+        @files << identify_file(name)
       end
       
       def to_string
@@ -238,8 +237,7 @@ module Meanbee
         return xml.target!
       end
       
-      protected
-      def _identify_file(name)
+      def identify_file(name)
         targets = {
           :magelocal     => 'app/code/local',
           :magecommunity => 'app/code/community',
@@ -250,7 +248,7 @@ module Meanbee
           # :mageweb is for everything else
         }
         
-        file_type = (name =~ /\/\w*\.\w+$/) ? 'file' : 'dir'
+        file_type = (name =~ /\w*\.\w+$/) ? 'file' : 'dir'
         
         targets.each do |key, value|
           if name =~ /^#{value}/
@@ -270,28 +268,4 @@ module Meanbee
       end
     end
   end
-end
-
-options = {}
-opts = OptionParser.new do |opts|
-  opts.banner = "Usage: modbuild.rb [options] filename"
-
-  opts.on("--debug", "Enable debug mode") do |v|
-    options[:debug] = v
-  end
-  
-  opts.on("--help", "Show help") do |v|
-    puts opts
-    exit
-  end
-end
-
-filename = opts.parse!
-
-if filename.length == 1
-  modbuild = Meanbee::Modbuild::Base.new filename[0]
-  modbuild.enable_debug() if options[:debug]
-  puts modbuild.build
-else
-  raise 'You need to provide a filename'
 end
