@@ -6,6 +6,10 @@ I use [modman](https://github.com/colinmollenhour/modman) to manage any Magento 
 
 This script gives you a running start by generating an XML file that you can then load in the admin interface containing most of the information you'll need, such as all of the files included in the extension and any metadata that you've included in your modman file.
 
+### Installation
+
+    gem install modbuild
+
 ### Example modman File
 
 You can include basic information, such as extension name, version, summary and description, in your modman file to be included in the generated XML file.  For example:
