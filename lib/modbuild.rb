@@ -5,6 +5,8 @@ require 'optparse'
 
 module Meanbee
   module Modbuild
+    VERSION = "1.0.0"
+
     class Base
       attr_accessor :package_name, :package_version, :package_summary, :package_description
       
