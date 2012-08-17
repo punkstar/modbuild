@@ -23,10 +23,6 @@ module Meanbee
         @package_summary = 'Unspecified package summary'
         @package_description = 'Unspecified package description'
         @package_files = []
-        
-        @logger.debug "Module Directory: #{@module_location}"
-        @logger.debug "Modman Directory: #{@modman_location}"
-        @logger.debug "Magento Directory: #{@magento_location}"
       end
       
       def enable_debug
@@ -34,6 +30,10 @@ module Meanbee
       end
       
       def build
+        @logger.debug "Module Directory: #{@module_location}"
+        @logger.debug "Modman Directory: #{@modman_location}"
+        @logger.debug "Magento Directory: #{@magento_location}"
+        
         get_package_files
         
         @logger.debug 'Generating XML file..'
