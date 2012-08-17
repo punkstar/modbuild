@@ -90,13 +90,11 @@ module Meanbee
               Dir.glob(File.join(@module_location, local_file)).each do |f|
                 @logger.debug "        Globbed file: #{f}"
 
-                f_regex = Regexp.new "^#{@module_location}#{local_file_directory}\/?"
+                f_regex = Regexp.new "^#{@module_location}\/?"
                 f_relative = f.gsub(f_regex, '')
-                f_magento = File.join(magento_file, f_relative)
 
-                @logger.debug "        Globbed file as relative: #{f_magento}"
-                @logger.debug "        Adding: #{f_magento}"
-                @package_files << f_magento
+                @logger.debug "        Adding: #{f_relative}"
+                @package_files << f_relative
               end
             else
               @logger.debug "    Adding: #{magento_file}"
