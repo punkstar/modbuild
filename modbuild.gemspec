@@ -13,5 +13,5 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "modbuild"
   gem.require_paths = ["lib"]
-  gem.version       = Meanbee::Modbuild::VERSION
+  gem.version       = Modbuild::VERSION
 end

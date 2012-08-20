@@ -21,7 +21,7 @@ end
 filename = opts.parse!
 
 if filename.length == 1
-  modbuild = Meanbee::Modbuild::Base.new filename[0]
+  modbuild = Modbuild::Base.new filename[0]
   modbuild.enable_debug() if options[:debug]
   puts modbuild.build
 else

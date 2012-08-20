@@ -2,9 +2,9 @@ $LOAD_PATH.unshift File.dirname(__FILE__) + '/../lib'
 
 require 'modbuild'
 
-describe Meanbee::Modbuild::Base, '#get_package_files' do
+describe Modbuild::Base, '#get_package_files' do
   it "should extract variables from comments" do
-    pkg = Meanbee::Modbuild::Base.new File.dirname(__FILE__) + '/fixtures/001_variables'
+    pkg = Modbuild::Base.new File.dirname(__FILE__) + '/fixtures/001_variables'
     pkg.get_package_files
     
     pkg.package_name.should eq 'My Magento Extension'
@@ -14,9 +14,9 @@ describe Meanbee::Modbuild::Base, '#get_package_files' do
   end
 end
 
-describe Meanbee::Modbuild::PackageXml, '#identify_file' do
+describe Modbuild::PackageXml, '#identify_file' do
   it "should identify file targets" do
-    pkgxml = Meanbee::Modbuild::PackageXml.new 'a', 'b', 'c', 'd'
+    pkgxml = Modbuild::PackageXml.new 'a', 'b', 'c', 'd'
     
     pkgxml.identify_file('app/code/local/Meanbee/Awesome')[:target].should eq 'magelocal'
     pkgxml.identify_file('app/code/community/Meanbee/Awesome')[:target].should eq 'magecommunity'
@@ -28,7 +28,7 @@ describe Meanbee::Modbuild::PackageXml, '#identify_file' do
   end
   
   it "should differentiate between files and directories" do
-    pkgxml = Meanbee::Modbuild::PackageXml.new 'a', 'b', 'c', 'd'
+    pkgxml = Modbuild::PackageXml.new 'a', 'b', 'c', 'd'
     
     pkgxml.identify_file('app/code/local/Meanbee/Awesome')[:type].should eq 'dir'
     pkgxml.identify_file('app/code/local/Meanbee/Awesome/')[:type].should eq 'dir'
@@ -41,7 +41,7 @@ describe Meanbee::Modbuild::PackageXml, '#identify_file' do
   end
   
   it "should provide file paths relative to target base directories" do
-    pkgxml = Meanbee::Modbuild::PackageXml.new 'a', 'b', 'c', 'd'
+    pkgxml = Modbuild::PackageXml.new 'a', 'b', 'c', 'd'
     
     pkgxml.identify_file('app/code/local/Meanbee/Awesome')[:path].should eq 'Meanbee/Awesome'
     pkgxml.identify_file('app/code/community/Meanbee/Awesome')[:path].should eq 'Meanbee/Awesome'
