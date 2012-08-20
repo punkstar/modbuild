@@ -1,10 +1,5 @@
 $:.unshift File.dirname(__FILE__)
 
-require 'pathname'
-require 'logger'
-require 'builder'
-require 'optparse'
-
 require 'modbuild/base'
 require 'modbuild/package_xml'
 

@@ -1,3 +1,5 @@
+require 'builder'
+
 module Modbuild
   class PackageXml
     def initialize(name, version, summary, description)

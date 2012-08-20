@@ -1,3 +1,5 @@
+require 'logger'
+
 module Modbuild
   class Base
     attr_accessor :package_name, :package_version, :package_summary, :package_description
